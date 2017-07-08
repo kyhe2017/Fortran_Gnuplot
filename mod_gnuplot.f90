@@ -62,7 +62,7 @@ contains
     character(len=*),  intent(in) :: str
 
     if (allocated(self%str)) then
-       self%str = self%str//str//new_line(' ')
+       self%str = self%str//str//'; '
     end if
   end subroutine add_str
 
@@ -181,29 +181,16 @@ contains
 
   subroutine excute(self)
     class(gnuplot), intent(inout) :: self
-    integer :: iunit, istat, status, system
+    integer :: status, system
 
     call self%set_pause()
     call self%add_str('q')
 
-    call get_unit(iunit)
-    if (iunit == 0) stop 'Error, no free unit accessed !'
-
-    open(unit=iunit, file=self%cmd_file_name, status='replace', iostat=istat)
-    if (istat /= 0) stop 'Error opening file !'
-
-    write(iunit, '(a)') self%str
-    flush(iunit)
-
-    status = system('gnuplot '//trim(self%cmd_file_name))	
+    status = system("gnuplot -e '"//trim(self%str)//"'")	
     if (status /= 0) stop ' Fatal error in running gnuplot !'
 
-    close(iunit, status='keep', iostat=istat)
-    if (istat /= 0) stop 'Error closing file !'
-
     if (.not. self%save_file) then
-       status = system('rm '//trim(self%dat_file_name)// &
-            & ' '//trim(self%cmd_file_name))
+       status = system('rm '//trim(self%dat_file_name))
        if (status /= 0) stop 'Fatal error in running rm !'
     end if
   end subroutine excute
@@ -324,28 +311,7 @@ contains
     call self%free
   end subroutine free_gp_image
 
-! --- miscellaneous routines and functions
-  subroutine get_unit(iunit)
-    implicit none
-    integer :: iunit
-    integer :: i, ios
-    logical :: lopen
-
-    iunit = 0
-    do i = 1, 99
-       if (i/=5 .and. i/=6) then	
-          inquire (unit=i, opened=lopen, iostat=ios)
-          if (ios == 0) then
-             if (.not. lopen) then
-                iunit = i
-                return
-             end if
-          end if
-       end if
-    end do
-    return
-  end subroutine get_unit
-  
+! --- miscellaneous routines and functions 
   function term_type(terminal) result(f_result)
     implicit none
     character(len=*), intent(in) :: terminal
