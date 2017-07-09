@@ -22,7 +22,7 @@ module class_gnuplot
 
   type, abstract :: gnuplot
      character(len=:), allocatable :: str
-     character(len=:), allocatable :: dat_file_name, cmd_file_name
+     character(len=:), allocatable :: dat_file_name
      logical  :: save_file = .false.
      real(dp) :: timeout = 0.d0
    contains
@@ -66,15 +66,14 @@ contains
     end if
   end subroutine add_str
 
-  subroutine init(self, dat_file_name, cmd_file_name, save_file, timeout)
+  subroutine init(self, dat_file_name, save_file, timeout)
     class(gnuplot), intent(inout) :: self
-    character(len=*),  intent(in) :: dat_file_name, cmd_file_name
+    character(len=*),  intent(in) :: dat_file_name
     logical,  intent(in) :: save_file
     real(dp), intent(in) :: timeout
 
     self%str = ''
     self%dat_file_name = trim(dat_file_name)
-    self%cmd_file_name = trim(cmd_file_name)
     self%save_file = save_file
     self%timeout = timeout
   end subroutine init
@@ -186,7 +185,7 @@ contains
     call self%set_pause()
     call self%add_str('q')
 
-    status = system("gnuplot -e '"//trim(self%str)//"'")	
+    status = system('gnuplot -e '' '//self%str//' '' ')
     if (status /= 0) stop ' Fatal error in running gnuplot !'
 
     if (.not. self%save_file) then
@@ -200,7 +199,6 @@ contains
 
     deallocate(self%str)
     deallocate(self%dat_file_name)
-    deallocate(self%cmd_file_name)
   end subroutine free
 
 ! --- subroutines for derived class, gp_plot
@@ -311,7 +309,7 @@ contains
     call self%free
   end subroutine free_gp_image
 
-! --- miscellaneous routines and functions 
+! --- miscellaneous routines and functions
   function term_type(terminal) result(f_result)
     implicit none
     character(len=*), intent(in) :: terminal

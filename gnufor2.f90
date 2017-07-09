@@ -79,7 +79,7 @@ contains
     real(dp), optional   :: pause
     character(len=*), optional :: terminal, filename, persist, input, title
     integer :: nx, ny, i, j, dat_unit
-    character(len=100) :: dat_file_name, cmd_file_name, my_pause, my_terminal, &
+    character(len=100) :: dat_file_name, my_pause, my_terminal, &
          & my_persist, my_title, my_filename
     logical :: save_file
     real(dp) :: timeout, xrange1, xrange2, yrange1, yrange2
@@ -103,10 +103,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'image5_dat', dat_unit)
@@ -136,7 +134,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_term(my_terminal, my_persist, my_title, my_filename)
     
@@ -158,7 +156,7 @@ contains
     real(dp), optional  :: pause
     character(len=*), optional :: terminal, filename, persist, input, title
     integer :: nx, ny, i, j, dat_unit
-    character(len=100) :: dat_file_name, cmd_file_name, my_terminal, &
+    character(len=100) :: dat_file_name, my_terminal, &
          & my_persist, my_title, my_filename
     logical  :: save_file
     real(dp) :: timeout
@@ -176,10 +174,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'image4_dat', dat_unit)
@@ -204,7 +200,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_term(my_terminal, my_persist, my_title, my_filename)
 
@@ -229,7 +225,7 @@ contains
     character(len=*), optional :: palette, terminal, filename, persist, input, &
          & title, xlabel, ylabel
     integer :: nx, ny, i, j, dat_unit
-    character(len=100) :: dat_file_name, cmd_file_name, my_terminal, my_persist, &
+    character(len=100) :: dat_file_name, my_terminal, my_persist, &
          & my_title, my_filename, my_xlabel, my_ylabel, my_palette
     logical  :: save_file
     real(dp) :: timeout, xrange1, xrange2, yrange1, yrange2
@@ -244,10 +240,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'image3_dat', dat_unit)
@@ -285,7 +279,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_config(my_terminal, my_persist, my_title, my_filename, &
        & my_xlabel, my_ylabel, my_palette, &
@@ -307,7 +301,7 @@ contains
     character(len=*), optional :: palette, terminal, filename, persist, input, &
          & title, xlabel, ylabel
     integer :: nx, ny, i, j, dat_unit
-    character(len=100) :: dat_file_name, cmd_file_name, my_terminal, my_persist, &
+    character(len=100) :: dat_file_name, my_terminal, my_persist, &
          & my_title, my_filename, my_xlabel, my_ylabel, my_palette
     logical  :: save_file
     real(dp) :: timeout, xrange1, xrange2, yrange1, yrange2
@@ -320,10 +314,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'image2_dat', dat_unit)
@@ -361,7 +353,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_config(my_terminal, my_persist, my_title, my_filename, &
        & my_xlabel, my_ylabel, my_palette, &
@@ -383,7 +375,7 @@ contains
     character(len=*), optional :: palette, terminal, filename, persist, input, &
          & title
     integer  :: nx, ny, i, j, dat_unit
-    character(len=100) :: dat_file_name, cmd_file_name, my_terminal, my_persist, &
+    character(len=100) :: dat_file_name, my_terminal, my_persist, &
          & my_title, my_filename, my_palette
     logical  :: save_file
     real(dp) :: timeout
@@ -394,10 +386,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'image1_dat', dat_unit)
@@ -423,7 +413,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_term(my_terminal, my_persist, my_title, my_filename)
 
@@ -449,7 +439,7 @@ contains
     real(dp), optional   :: pause, linewidth
     character(len=*), optional :: color, terminal, filename, persist, input, title
     integer :: i, nx, dat_unit
-    character(len=100) :: dat_file_name, cmd_file_name, my_terminal, &
+    character(len=100) :: dat_file_name, my_terminal, &
          & my_persist, my_title, my_filename, my_linewidth, my_color
     logical :: save_file
     real(dp) :: timeout
@@ -461,10 +451,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'plot3d_dat', dat_unit)
@@ -499,7 +487,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_term(my_terminal, my_persist, my_title, my_filename)
     
@@ -521,7 +509,7 @@ contains
     real(dp), optional   :: pause
     character(len=*), optional :: color, terminal, filename, persist, input, title
     integer :: i, j, dat_unit, nx
-    character(len=100) :: dat_file_name, cmd_file_name, xtic_start, dxtic, xtic_end, &
+    character(len=100) :: dat_file_name, xtic_start, dxtic, xtic_end, &
          & my_terminal, my_persist, my_title, my_filename, my_color
     logical  :: save_file
     real(dp) :: xmin, xmax, xhist(0:n), yhist(n+1), dx, yrange, xrange1, xrange2, timeout
@@ -549,10 +537,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'hist_dat', dat_unit)
@@ -582,7 +568,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_term(my_terminal, my_persist, my_title, my_filename)
     
@@ -664,7 +650,7 @@ contains
     character(len=*), optional :: palette, terminal, filename, pm3d, contour, persist, &
          & input, title
     integer            :: nx, ny, nrow, i, j, dat_unit
-    character(len=100) :: dat_file_name, cmd_file_name,my_terminal, my_persist, &
+    character(len=100) :: dat_file_name, my_terminal, my_persist, &
          & my_title, my_filename, my_palette
     logical  :: save_file
     real(dp) :: timeout
@@ -676,10 +662,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'surf_dat', dat_unit)
@@ -708,7 +692,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_term(my_terminal, my_persist, my_title, my_filename)
 
@@ -744,7 +728,7 @@ contains
     character(len=*), optional :: style, color1, color2, color3, color4, &
          & terminal, filename, polar, persist, input, title
     integer :: i, dat_unit, Nx1, Nx2, Nx3, Nx4, Nmax
-    character(len=100) :: dat_file_name, cmd_file_name, my_linewidth
+    character(len=100) :: dat_file_name, my_linewidth
     character(len=20)  :: my_line_type1, my_line_type2, my_line_type3, my_line_type4, &
          & my_color1, my_color2, my_color3, my_color4, &
          & my_terminal, my_persist, my_title, my_filename
@@ -763,10 +747,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'plot4_dat', dat_unit)
@@ -867,7 +849,7 @@ contains
 
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_config(my_terminal, my_persist, my_title, my_filename, my_polar, &
        & xrange1, xrange2, yrange1, yrange2)
@@ -896,7 +878,7 @@ contains
     character(len=*), optional :: style, color1, color2, color3, &
          & terminal, filename, polar, persist, input, title
     integer :: i, dat_unit, Nx1, Nx2, Nx3, Nmax
-    character(len=100) :: dat_file_name, cmd_file_name, my_linewidth
+    character(len=100) :: dat_file_name, my_linewidth
     character(len=20)  :: my_line_type1, my_line_type2, my_line_type3, &
          & my_color1, my_color2, my_color3, &
          & my_terminal, my_persist, my_title, my_filename
@@ -914,10 +896,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'plot3_dat', dat_unit)
@@ -1004,7 +984,7 @@ contains
     
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_config(my_terminal, my_persist, my_title, my_filename, my_polar, &
        & xrange1, xrange2, yrange1, yrange2)
@@ -1030,7 +1010,7 @@ contains
     character(len=*), optional :: style, color1, color2, terminal, &
          & filename, polar, persist, input, title
     integer :: i, dat_unit, Nx1, Nx2, Nmax
-    character(len=100) :: dat_file_name, cmd_file_name, my_linewidth
+    character(len=100) :: dat_file_name, my_linewidth
     character(len=20)  :: my_line_type1, my_line_type2, my_color1, my_color2, &
          & my_terminal, my_persist, my_title, my_filename
     logical :: save_file, my_polar
@@ -1047,10 +1027,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'plot2_dat', dat_unit)
@@ -1124,7 +1102,7 @@ contains
 
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_config(my_terminal, my_persist, my_title, my_filename, my_polar, &
        & xrange1, xrange2, yrange1, yrange2)
@@ -1148,7 +1126,7 @@ contains
     character(len=*), optional :: style, color1, terminal, filename, polar, &
          & persist, input, title
     integer :: i, dat_unit, Nx1
-    character(len=100) :: dat_file_name, cmd_file_name, my_linewidth
+    character(len=100) :: dat_file_name, my_linewidth
     character(len=20)  :: my_line_type1, my_color1, &
          & my_terminal, my_persist, my_title, my_filename
     logical :: save_file, my_polar
@@ -1163,10 +1141,8 @@ contains
 
     if (present(input)) then
        dat_file_name = 'dat_file_'//trim(input)//'.dat'
-       cmd_file_name = 'cmd_file_'//trim(input)//'.plt'
     else
        dat_file_name = 'dat_file.dat'
-       cmd_file_name = 'cmd_file.plt'
     end if
 
     call chk_unit(dat_file_name, 'plot1_dat', dat_unit)
@@ -1223,7 +1199,7 @@ contains
 
     allocate(gg)
     
-    call gg%init(dat_file_name, cmd_file_name, save_file, timeout)
+    call gg%init(dat_file_name, save_file, timeout)
     
     call gg%set_config(my_terminal, my_persist, my_title, my_filename, my_polar, &
        & xrange1, xrange2, yrange1, yrange2)
